@@ -1,27 +1,27 @@
 /*
  * Client-Server Crypto Messaging Application.
  *
- * The case study in our S5 Paper, adapted to include:
+ * The case study in our ESORICS'19 Paper, adapted to include:
  * -> A proper mock for net using events
  * -> Still a toy mock for webcrypto, to avoid computing crypto.
- * -> Otherwise, it is the node code
  *
  * Added symbolic array for input to enable DSE through expoSE.
  */
 'use strict';
 var window = require('./window-mock');
 var net = require('./net-mock');
-var S$ = require('S$');
 
-//Added lines for property checking
+/**
+ * START OF REQUIRED DEVELOPER MODIFICATIONS
+ * Addin the shim, call it and mock process.argv as a symbolic array.
+ */
+var S$ = require('S$');
 var shim = require('./wcShim');
 shim(window);
-
-/*
- * Mock for process.argv with symbolic array.
- */
 process.argv = S$.symbol('Args', ['']);
-//process.argv = ['node', 'prog.js', 'A'];
+/**
+ * END OF REQUIRED DEVELOPER MODIFICATIONS
+ */
 
 //Initialize crypto.
 var crypto = window.crypto;
@@ -181,7 +181,7 @@ function computeSharedSecret(store, theirPubKey) {
 }
 
 /**
- * Where the bug is; and we've had to modify the function
+ * TODO: Where the bug is; and we've had to modify the function
  */
 function getIV() {
 	var iv = new Uint8Array(16);

@@ -39,7 +39,7 @@ function clone(obj) {
 }
 
 /**
- * The actual WebCrypto Shim*, from ESORICS'19
+ * Shim for webcrypto, from ESORICS'19
  */
 var wcShim = function(window) {
 
@@ -47,10 +47,12 @@ var wcShim = function(window) {
 	window.oldCrypto = clone(window.crypto);
 	var wc = window.oldCrypto.subtle;
 
+	/**
+	 * TODO: This is not faithful, and should return null
+	 */ 
 	var grvShim = function(arr) {
 	  window.oldCrypto.getRandomValues(arr);
 	  arr = S$.annotate(arr, _CSRV);
-	  //TODO not faithful, should return null
 	  return arr;
 	};
 
