@@ -52,8 +52,8 @@ var wcShim = function(window) {
 	 */ 
 	var grvShim = function(arr) {
 	  window.oldCrypto.getRandomValues(arr);
-	  arr = S$.annotate(arr, _CSRV);
-	  return arr;
+	  S$.annotate(arr, _CSRV);
+	  return null;
 	};
 
 	var gkShim = function(alg, extractable, keyUsages) {

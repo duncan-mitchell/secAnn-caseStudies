@@ -181,12 +181,11 @@ function computeSharedSecret(store, theirPubKey) {
 }
 
 /**
- * TODO: Where the bug is; and we've had to modify the function
+ * Location of bug
  */
 function getIV() {
 	var iv = new Uint8Array(16);
-	//not faithful; should not be iv=
-	iv = crypto.getRandomValues(iv);
+	crypto.getRandomValues(iv);
 	//IV should be encodable as ASCII characters
 	for (var i = 0; i < iv.length; i++) {
 		iv[i] = iv[i] % 128;
