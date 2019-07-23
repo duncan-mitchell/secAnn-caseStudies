@@ -47,9 +47,6 @@ var wcShim = function(window) {
 	window.oldCrypto = clone(window.crypto);
 	var wc = window.oldCrypto.subtle;
 
-	/**
-	 * TODO: This is not faithful, and should return null
-	 */ 
 	var grvShim = function(arr) {
 	  window.oldCrypto.getRandomValues(arr);
 	  S$.annotate(arr, _CSRV);
