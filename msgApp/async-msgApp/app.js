@@ -204,9 +204,9 @@ function getIV() {
 	crypto.getRandomValues(iv);
 	//IV should be encodable as ASCII characters
 	//Comment out for loop to avoid bug
-/*	for (var i = 0; i < iv.length; i++) {
+	for (var i = 0; i < iv.length; i++) {
 		iv[i] = iv[i] % 128;
-	}*/
+	}
 	return iv;
 }
 
