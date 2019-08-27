@@ -13,7 +13,7 @@ var net = require('./net-mock');
 
 /**
  * START OF REQUIRED DEVELOPER MODIFICATIONS
- * Addin the shim, call it and mock process.argv as a symbolic array.
+ * Add in the shim, call it and mock process.argv as a symbolic array.
  */
 var S$ = require('S$');
 var shim = require('./wcShim');
@@ -204,9 +204,9 @@ function getIV() {
 	crypto.getRandomValues(iv);
 	//IV should be encodable as ASCII characters
 	//Comment out for loop to avoid bug
-	for (var i = 0; i < iv.length; i++) {
+/*	for (var i = 0; i < iv.length; i++) {
 		iv[i] = iv[i] % 128;
-	}
+	}*/
 	return iv;
 }
 
@@ -244,7 +244,7 @@ function sendMsg(socket, msg, usr) {
 
 function getMsg () {
 	var args = process.argv;
-	if (args.length != 3) {
+	if (args.length != 3 || args[2] === "") {
 		throw ("cryptoApp takes a single message as argument");
 	} else {
 		return args[2];

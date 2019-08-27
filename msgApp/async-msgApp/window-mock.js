@@ -27,7 +27,7 @@ var window = {
 				  		}, 300);
 					}); 
 				}
-				throw "invalid key generation"
+				throw "InvalidAccessError"
 			},
 			encrypt: function(alg, key, data) {
 				if(alg.name == 'AES-CBC') {
@@ -38,7 +38,7 @@ var window = {
 				  		}, 300);
 					}); 				 	
 				} else {
-					throw 'invalid algorithm'
+					throw 'InvalidAccessError'
 				}
 			},
 			decrypt: function(alg, key, data) {
@@ -50,7 +50,7 @@ var window = {
 				  		}, 300);
 				  	});
 				} else {
-					throw 'invalid algorithm'
+					throw 'InvalidAccessError'
 				}
 			},
 			sign: function(alg, key, data){
