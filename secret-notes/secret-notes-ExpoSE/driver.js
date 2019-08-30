@@ -30,12 +30,16 @@ var v2 = integrity.save(getNote()).then(function() {
 	})
 });
 
-var authenticity = require('./versions/authenticity');
-var v3 = authenticity.save(getNote()).then(function() {
-	authenticity.load().then(function(res) {
-		console.log('authenticity: ' + res);
-	})
-});
+try {
+	var authenticity = require('./versions/authenticity');
+	var v3 = authenticity.save(getNote()).then(function() {
+		authenticity.load().then(function(res) {
+			console.log('authenticity: ' + res);
+		})
+	});
+} catch {
+	//continue - this one has a bug in it.
+}
 
 var secrecy = require('./versions/secrecy');
 var v4 = authenticity.save(getNote()).then(function() {

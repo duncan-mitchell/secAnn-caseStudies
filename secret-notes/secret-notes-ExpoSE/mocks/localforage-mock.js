@@ -11,8 +11,6 @@ var store = {
 	nonce4: undefined,
 	salt4: undefined
 }
-var S$ = require('S$')
-
 
 function getItem(key) {
 	let promise = new Promise(function(resolve, reject) {

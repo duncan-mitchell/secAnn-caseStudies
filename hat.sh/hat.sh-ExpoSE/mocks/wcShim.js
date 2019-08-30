@@ -1,4 +1,4 @@
-var S$ = require('S$');
+const S$ = require('S$');
 
 /*
  * SecAnn <!CSRV * Message * CryptKey * Signature!>;
